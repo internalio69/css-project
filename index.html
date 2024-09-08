@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        cursor: default;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial;
+        font-weight: 400;
+        background-color: #373a40;
+        color: white;
+      }
+      nav {
+        display: flex;
+        justify-content: space-between;
+        background: linear-gradient(hsla(0, 0%, 13%, 0.9), hsla(0, 0%, 0%, 0));
+        height: 80px;
+      }
+      nav .navbar-start {
+        padding: 1em;
+        padding-top: 5px;
+      }
+      nav .navbar-end {
+        background-color: hsla(226, 64%, 47%, 1);
+        margin: 20px 15px 5px 5px;
+        padding: 10px 20px 10px 18px;
+        border-radius: 10px;
+      }
+      nav .navbar-end:hover {
+        background-color: hsla(226, 64%, 42%, 1);
+      }
+      .navbar-end {
+        text-decoration: none;
+        color: white;
+        height: 40px;
+        cursor: pointer;
+      }
+      .navbar-start .nav-items ul {
+        display: flex;
+        text-decoration: none;
+        list-style: none;
+        margin: 20;
+        padding: 0;
+        font-weight: bold;
+      }
+      .navbar-start .nav-items ul li {
+        display: inline-block;
+        margin-right: 10px;
+        padding: 10px;
+        color: #e8e9e9;
+      }
+      .navbar-start .nav-items ul li:hover {
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        color: #c5c5c6;
+      }
+      .nav-items ul #selected {
+        color: #c5c5c6;
+      }
+      .navbar-heading {
+        font-weight: bold;
+        margin-top: 30px;
+        padding-right: 15px;
+        padding-left: 15px;
+        padding-left: 15px;
+      }
+      nav {
+        position: absolute;
+        top: 0px;
+        width: 100%;
+      }
+      .main-title {
+        color: rgb(255, 255, 255);
+        position: absolute;
+        display: block;
+        text-align: center;
+        text-shadow: 1px 1px 30px black;
+        width: 100%;
+        top: 1.5em;
+        font-size: 4em;
+      }
+      .main-description {
+        color: #dcffc5;
+        position: absolute;
+        display: block;
+        text-align: center;
+        width: 100%;
+        top: 15em;
+        padding-right: 15em;
+        padding-left: 15em;
+        font-size: 1em;
+      }
+      .btn-main {
+        text-decoration: none;
+        background-color: rgb(168, 18, 255);
+        box-shadow: 1px 1px 21px black;
+        cursor: pointer;
+        padding: 15px;
+        font-size: 18px;
+        border-radius: 20px;
+        color: #d4d4d4;
+      }
+      .main-btns {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        top: 24.5em;
+      }
+      .about .img-text {
+        padding-left: 25px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .about .img {
+        margin-left: 25px;
+        padding: 8px 3px 8px 3px;
+        display: inline-block;
+        vertical-align: middle;
+        border-radius: 20px;
+      }
+      .about {
+        padding-top: 40px;
+      }
+      hr {
+        border: 1px solid #4b4d53;
+        margin: 60px 90px 60px 90px;
+      }
+      .courses-box {
+        display: flex;
+        justify-content: space-around;
+      }
+      .course {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+        margin: 10px;
+        background-color: #4b4d53;
+        border-radius: 8px;
+      }
+      .course-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        background-color: #3d3e41;
+      }
+      #icon {
+        padding: 16px;
+        padding-top: 18px;
+      }
+      .reviews-box {
+        display: flex;
+        justify-content: space-around;
+      }
+      .review {
+        text-align: center;
+        padding: 10px 20px 10px 20px;
+        margin: 10px;
+        background-color: #4b4d53;
+        border-radius: 8px;
+      }
+      footer {
+        margin-top: 4em;
+        padding: 15px;
+        background-color: #212225;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="images/img.jpg" width="100%" />
+    <div section="#main" class="main">
+      <nav>
+        <p class="navbar-heading">My College</p>
+        <div class="navbar-start">
+          <div class="nav-items">
+            <ul>
+              <li id="selected">Home</li>
+              <a href="#about"><li>About</li></a>
+              <a href="#courses"><li>Courses</li></a>
+              <a href="#reviews"><li>Reviews</li></a>
+            </ul>
+          </div>
+        </div>
+        <a href="/login" class="navbar-end"
+          ><i class="fas fa-unlock-alt"></i>&nbsp;Login</a
+        >
+      </nav>
+      <h1 class="main-title">My College</h1>
+      <p class="main-description">
+        Welcome to My College, where we are committed to providing a quality
+        education and fostering a vibrant community.<br />Our institution offers
+        a wide range of undergraduate and postgraduate programs designed to
+        equip<br />
+        students with the knowledge and skills needed to excel in their chosen
+        fields.<br />
+        <br />Join us in our mission to empower students and shape the future.
+      </p>
+      <div class="main-btns">
+        <a class="btn-main" href="#about">Get Started</a>
+      </div>
+    </div>
+
+    <div id="about" class="about">
+      <h1 align="center">About Us</h1>
+      <img
+        src="https://impactfield.com.ng/wp-content/uploads/2019/11/about-us.png"
+        width="35%"
+        class="img"
+      />
+      <p class="img-text">
+        My College has a rich history of academic excellence and a commitment to
+        innovation.<br />
+        Established in 1999, we have grown to become a leading institution known
+        for our rigorous academic programs <br />and supportive learning
+        environment. Our alumni have gone on to achieve great success in various
+        fields,<br />
+        and we continue to build on our legacy by adapting to the changing needs
+        of the world.
+      </p>
+    </div>
+    <hr />
+    <div id="courses">
+      <h1 align="center">Courses</h1>
+      <br />
+      <div class="courses-box">
+        <div class="course">
+          <div class="course-icon">
+            <i class="fas fa-ethernet" id="icon"></i>
+          </div>
+          <h4>Information Technology</h4>
+          <p>
+            The Information Technology program<br />
+            provides students with a comprehensive<br />
+            understanding of the principles and<br />
+            practices of IT. Students will learn<br />
+            about network administration,<br />
+            software development, and data management.
+          </p>
+        </div>
+        <div class="course">
+          <div class="course-icon">
+            <i class="fas fa-laptop-code" id="icon"></i>
+          </div>
+          <h4>Computer Engineering</h4>
+          <p>
+            The Computer Engineering program<br />
+            focuses on the design and development<br />
+            of computer systems and software.<br />
+            Students will study hardware design,<br />
+            software engineering, and embedded<br />
+            systems.
+          </p>
+        </div>
+        <div class="course">
+          <div class="course-icon">
+            <i class="fas fa-wrench" id="icon"></i>
+          </div>
+          <h4>Mechanical Engineering</h4>
+          <p>
+            The Mechanical Engineering program<br />
+            provides a comprehensive education<br />
+            in the principles of mechanics,<br />
+            thermodynamics, and materials science.<br />
+            Students will learn to design and<br />
+            analyze mechanical systems.
+          </p>
+        </div>
+        <div class="course">
+          <div class="course-icon">
+            <i class="fas fa-bolt" id="icon"></i>
+          </div>
+          <h4>Electrical Engineering</h4>
+          <p>
+            The Electrical Engineering program<br />
+            covers the fundamentals of electrical<br />
+            circuits, systems, and power generation.<br />
+            Students will study electronics, signal<br />
+            processing, and control systems.<br />
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div id="reviews">
+      <h1 align="center">Reviews</h1>
+      <div class="reviews-box">
+        <div class="review">
+          <h4>User1</h4>
+          <div class="stars">
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <p>
+            The professors here are incredibly<br />
+            knowledgeable and always willing to help.<br />
+            They make earning engaging and fun.
+          </p>
+        </div>
+        <div class="review">
+          <h4>User2</h4>
+          <div class="stars">
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+          </div>
+          <p>
+            The student body is diverse and inclusive<br />
+            I've made friends from all over the<br />
+            world and everyone is so supportive..
+          </p>
+        </div>
+        <div class="review">
+          <h4>User3</h4>
+          <div class="stars">
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <p>
+            The library and research facilities are<br />
+            top-notch. I've had access to everything<br />
+            I need for my studies.
+          </p>
+        </div>
+        <div class="review">
+          <h4>User4</h4>
+          <div class="stars">
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <p>
+            The college has strong ties with industry<br />
+            leaders providing excellent internship<br />
+            and job opportunities
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer align="center">&copy; 2024 My College | All Rights Reserved</footer>
+  </body>
+</html>
