@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Login</title>
+    <title>My College</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -173,8 +173,12 @@
         text-align: center;
         padding: 10px 20px 10px 20px;
         margin: 10px;
-        background-color: #4b4d53;
-        border-radius: 8px;
+        border-right: 2px dashed #7e7e7e;
+      }
+      .review2 {
+        text-align: center;
+        padding: 10px 20px 10px 20px;
+        margin: 10px;
       }
       footer {
         margin-top: 4em;
@@ -184,7 +188,7 @@
     </style>
   </head>
   <body>
-    <img src="images/img.jpg" width="100%" />
+    <img src="images/img.jpg" width="100%" style="border-bottom: 2px solid #4b4d53;" />
     <div section="#main" class="main">
       <nav>
         <p class="navbar-heading">My College</p>
@@ -198,7 +202,7 @@
             </ul>
           </div>
         </div>
-        <a href="/login" class="navbar-end"
+        <a href="/login.html" class="navbar-end"
           ><i class="fas fa-unlock-alt"></i>&nbsp;Login</a
         >
       </nav>
@@ -346,7 +350,7 @@
             I need for my studies.
           </p>
         </div>
-        <div class="review">
+        <div class="review2">
           <h4>User4</h4>
           <div class="stars">
             <i class="fas fa-star" style="color: rgb(255, 166, 0)"></i>
@@ -363,6 +367,6 @@
         </div>
       </div>
     </div>
-    <footer align="center">&copy; 2024 My College | All Rights Reserved</footer>
+    <footer align="center" style="position: relative; bottom: 0; width: 100%">&copy; 2024 My College | All Rights Reserved</footer>
   </body>
 </html>
