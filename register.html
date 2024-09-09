@@ -192,8 +192,31 @@
 
         if (paswd != confPaswd) return alert("Passwords do not not match");
 
-        alert("Registered Successfully")
-        document.location.href = "/login.html"
+        var user = {
+          email: email,
+          password: paswd,
+        };
+        var users = [];
+        if (document.cookie.includes("users=")) {
+          var existingUsers = document.cookie
+            .split(";")
+            .find((cookie) => cookie.trim().startsWith("users="))
+            .split("=")[1];
+          if (existingUsers) {
+            users = JSON.parse(existingUsers);
+          }
+
+          for (user of users) {
+            if (user.email == email) {
+              return alert("Email already exists, please try a different one.");
+            }
+          }
+        }
+        users.push(user);
+        document.cookie = "users=" + JSON.stringify(users);
+
+        alert("Registered Successfully");
+        document.location.href = "/login.html";
       });
     </script>
   </body>

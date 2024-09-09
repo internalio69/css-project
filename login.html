@@ -156,15 +156,13 @@
           <div style="width: 100%; text-align: center">
             <img src="images/user.png" width="25%" style="margin: auto" />
           </div>
-          <label style="display: block; font-weight: bold"
-            >Email:</label
-          >
+          <label style="display: block; font-weight: bold">Email:</label>
           <input type="text" id="email" />
           <br />
           <label style="display: block; font-weight: bold">Pasword:</label>
           <input type="password" id="password" />
           <div class="button-box">
-            <button class="form-btn" type="submit" style="cursor: pointer;">
+            <button class="form-btn" type="submit" style="cursor: pointer">
               <i class="fas fa-sign-in-alt"></i>&nbsp;Login
             </button>
           </div>
@@ -173,7 +171,11 @@
             <span>Don't have an account?</span
             ><a
               href="/register.html"
-              style="color: rgb(0, 132, 255); text-decoration: none; cursor: pointer;"
+              style="
+                color: rgb(0, 132, 255);
+                text-decoration: none;
+                cursor: pointer;
+              "
             >
               Click here</a
             >
@@ -192,8 +194,26 @@
         if (email == "" || paswd == "")
           return alert("Please fill all the fields");
 
-        alert("Logged in successfully");
-        document.location.href = "/login.html"
+        if (document.cookie.includes("users=")) {
+          var existingUsers = document.cookie
+            .split(";")
+            .find((cookie) => cookie.trim().startsWith("users="))
+            .split("=")[1];
+          if (existingUsers) {
+            users = JSON.parse(existingUsers);
+          }
+
+          for (user of users) {
+            if (user.email == email) {
+              if (user.password != paswd) return alert("Invalid password");
+
+              alert("Logged in successfully");
+              return document.location.href = "/login.html";
+            }
+          }
+        }
+
+        alert("User does not exist");
       });
     </script>
   </body>
