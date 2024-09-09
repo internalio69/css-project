@@ -82,38 +82,25 @@
         top: 0px;
         width: 100%;
       }
-
       footer {
         margin-top: 4em;
         padding: 15px;
         background-color: #212225;
       }
       .login-heading {
-        margin-top: 6em;
+        margin-top: 3em;
         text-align: center;
       }
       .login-card {
         display: flex;
         background-color: #212225;
-        max-width: 30%;
+        width: 80%;
         margin: auto;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0px 0px 3px #000000;
         align-self: center;
         justify-self: center;
-      }
-      input {
-        background-color: #b8b8b8;
-        padding: 8px;
-        font-size: 15px;
-        color: rgb(0, 0, 0);
-        display: block;
-        min-width: 100%;
-        margin-top: 15px;
-        border-radius: 5px;
-        border: 1px solid #707070;
-        cursor: text;
       }
       .button-box {
         width: 35%;
@@ -123,14 +110,27 @@
       .form-btn {
         border: none;
         padding: 8px;
-        background-color: rgb(20, 73, 220);
+        background-color: rgb(220, 20, 47);
         width: 100%;
         border-radius: 6px;
         color: white;
         font-weight: bold;
         font-size: 0.9em;
       }
+      table,
+      td,
+      th {
+        border: 1px solid white;
+        padding: 5px;
+      }
     </style>
+    <script type="text/javascript">
+      function assignEventListener(num) {
+        document.getElementById("btn_" + num).addEventListener("click", (e) => {
+          document.getElementById("entry_" + num).remove();
+        });
+      }
+    </script>
   </head>
   <body>
     <div section="#main" class="main">
@@ -150,71 +150,80 @@
           ><i class="fas fa-unlock-alt"></i>&nbsp;Login</a
         >
       </nav>
-      <h2 class="login-heading">Login to Continue..</h2>
+      <h2 class="login-heading">Dashboard</h2>
       <div class="login-card">
-        <form id="submit-form">
-          <div style="width: 100%; text-align: center">
-            <img src="images/user.png" width="25%" style="margin: auto" />
-          </div>
-          <label style="display: block; font-weight: bold">Email:</label>
-          <input type="text" id="email" />
-          <br />
-          <label style="display: block; font-weight: bold">Pasword:</label>
-          <input type="password" id="password" />
-          <div class="button-box">
-            <button class="form-btn" type="submit" style="cursor: pointer">
-              <i class="fas fa-sign-in-alt"></i>&nbsp;Login
-            </button>
-          </div>
-          <br />
-          <div style="text-align: center">
-            <span>Don't have an account?</span
-            ><a
-              href="/register.html"
-              style="
-                color: rgb(0, 132, 255);
-                text-decoration: none;
-                cursor: pointer;
-              "
-            >
-              Click here</a
-            >
-          </div>
-        </form>
+        <table align="center">
+          <tr>
+            <th>Sr No.</th>
+            <th>Roll Number</th>
+            <th>Enrollment No.</th>
+            <th>Name of Student</th>
+            <th>Course</th>
+            <th>Regular/OTO</th>
+            <th>Actions</th>
+          </tr>
+          <script type="text/javascript">
+            let data = [
+              [
+                1,
+                243401,
+                2105710073,
+                "GHARE PRATHAM RATNADEEP",
+                "TYIF 2024-2025",
+                "REGULAR",
+              ],
+              [
+                2,
+                243402,
+                2205710007,
+                "JETHWA TANISHA ASHOK",
+                "TYIF 2024-2025",
+                "REGULAR",
+              ],
+              [
+                3,
+                243403,
+                2205710055,
+                "ANSARI NUHZEEN IMTIYAZ",
+                "TYIF 2024-2025",
+                "REGULAR",
+              ],
+              [
+                4,
+                243404,
+                2205710057,
+                "BANIK SHIVAM SITAL",
+                "TYIF 2024-2025",
+                "REGULAR",
+              ],
+              [
+                5,
+                243405,
+                2205710058,
+                "CHAUHAN RAM RAJPATI",
+                "TYIF 2024-2025",
+                "REGULAR",
+              ],
+            ];
+            for (d in data) {
+              document.write('<tr id="entry_' + d + '">');
+              for (e in data[d]) {
+                document.write(`<td>${data[d][e]}</td>`);
+              }
+              document.write(
+                '<td><button class="form-btn" id="btn_' +
+                  d +
+                  '"><i class="far fa-trash-alt"></i> Delete</button></td>'
+              );
+              document.write("</tr>");
+              assignEventListener(d);
+            }
+          </script>
+        </table>
       </div>
     </div>
     <footer align="center" style="position: fixed; bottom: 0; width: 100%">
       &copy; 2024 My College | All Rights Reserved
     </footer>
-    <script type="text/javascript">
-      document.getElementById("submit-form").addEventListener("submit", (e) => {
-        e.preventDefault();
-        var email = document.getElementById("email").value;
-        var paswd = document.getElementById("password").value;
-        if (email == "" || paswd == "")
-          return alert("Please fill all the fields");
-
-        if (document.cookie.includes("users=")) {
-          var existingUsers = document.cookie
-            .split(";")
-            .find((cookie) => cookie.trim().startsWith("users="))
-            .split("=")[1];
-          if (existingUsers) {
-            users = JSON.parse(existingUsers);
-          }
-
-          for (user of users) {
-            if (user.email == email) {
-              if (user.password != paswd) return alert("Invalid password");
-                document.cookie = `isLoggedIn=${users.indexOf(user)};`;
-              alert("Logged in successfully");
-              return document.location.href = "/login.html";
-            }
-          }
-        }
-
-        alert("User does not exist");
-      });
-    </script>
   </body>
 </html>

@@ -206,14 +206,14 @@
             users = JSON.parse(existingUsers);
           }
 
-          for (user of users) {
+          for (let user of users) {
             if (user.email == email) {
               return alert("Email already exists, please try a different one.");
             }
           }
         }
         users.push(user);
-        document.cookie = "users=" + JSON.stringify(users);
+        document.cookie = "users=" + JSON.stringify(users) + ";";
 
         alert("Registered Successfully");
         document.location.href = "/login.html";
