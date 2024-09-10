@@ -178,33 +178,6 @@
         document.cookie = "isLoggedIn=; expires=" + date.toUTCString() + ";";
         document.location.href = "/";
       }
-
-      function submitStudentData() {
-        let data = [
-          srno,
-          document.getElementById("rollno").value,
-          document.getElementById("enrollno").value,
-          document.getElementById("studname").value,
-          document.getElementById("radio-regular") ? "Regular" : "OTO",
-          document.getElementById("course").value,
-        ];
-        console.log(data);
-
-        let index = srno - 1;
-        addStudent(index, data);
-
-        document.write('<tr id="entry_' + index + '">');
-        for (e in data) {
-          document.write(`<td>${data[e]}</td>`);
-        }
-        document.write(
-          '<td><button class="actions-btn" id="btn_' +
-            index +
-            '"><i class="far fa-trash-alt"></i> Delete</button></td>'
-        );
-        document.write("</tr>");
-        assignEventListener(index);
-      }
     </script>
   </head>
   <body>
@@ -234,125 +207,76 @@
         </script>
       </nav>
       <h2 class="heading">Dashboard</h2>
-      <div style="display: flex; justify-content: space-around">
-        <div class="card-alt">
-          <h3>Add Student Data:</h3>
-          <form>
-            <div style="display: block; margin-bottom: 10px">
-              <span>Roll Number:</span>
-              <input type="number" style="width: 140px" id="rollno" />
-            </div>
-            <div style="display: block; margin-bottom: 10px">
-              <span>Enrollment No:</span>
-              <input type="number" style="width: 140px" id="enrollno" />
-            </div>
-            <div style="display: block; margin-bottom: 10px">
-              <span>Name of Student:</span>
-              <input type="text" style="width: 140px" id="studname" />
-            </div>
-            <div style="display: block; margin-bottom: 10px">
-              <span>Type:</span>
-              <input
-                type="radio"
-                value="Regular"
-                name="options"
-                id="radio-regular"
-              />Regular
-              <input
-                type="radio"
-                value="OTO"
-                name="options"
-                id="radio-oto"
-              />OTO
-            </div>
-            <div style="display: block; margin-bottom: 10px">
-              <span>Course:</span>
-              <select name="course" id="course">
-                <option value="TYIF 2024-2025">TYIF 2024-2025</option>
-                <option value="TYCO 2024-2025">TYCO 2024-2025</option>
-                <option value="TYCM 2024-2025">TYCM 2024-2025</option>
-              </select>
-            </div>
-            <button
-              type="submit"
-              class="form-btn"
-              onclick="submitStudentData()"
-            >
-              Submit Data
-            </button>
-          </form>
-        </div>
-        <div class="card">
-          <table align="center">
-            <tr>
-              <th>Sr No.</th>
-              <th>Roll Number</th>
-              <th>Enrollment No.</th>
-              <th>Name of Student</th>
-              <th>Course</th>
-              <th>Regular/OTO</th>
-              <th>Actions</th>
-            </tr>
-            <script type="text/javascript">
-              let srno = 6;
-              let data = [
-                [
-                  1,
-                  243401,
-                  2105710073,
-                  "GHARE PRATHAM RATNADEEP",
-                  "TYIF 2024-2025",
-                  "REGULAR",
-                ],
-                [
-                  2,
-                  243402,
-                  2205710007,
-                  "JETHWA TANISHA ASHOK",
-                  "TYIF 2024-2025",
-                  "REGULAR",
-                ],
-                [
-                  3,
-                  243403,
-                  2205710055,
-                  "ANSARI NUHZEEN IMTIYAZ",
-                  "TYIF 2024-2025",
-                  "REGULAR",
-                ],
-                [
-                  4,
-                  243404,
-                  2205710057,
-                  "BANIK SHIVAM SITAL",
-                  "TYIF 2024-2025",
-                  "REGULAR",
-                ],
-                [
-                  5,
-                  243405,
-                  2205710058,
-                  "CHAUHAN RAM RAJPATI",
-                  "TYIF 2024-2025",
-                  "REGULAR",
-                ],
-              ];
-              for (d in data) {
-                document.write('<tr id="entry_' + d + '">');
-                for (e in data[d]) {
-                  document.write(`<td>${data[d][e]}</td>`);
-                }
-                document.write(
-                  '<td><button class="actions-btn" id="btn_' +
-                    d +
-                    '"><i class="far fa-trash-alt"></i> Delete</button></td>'
-                );
-                document.write("</tr>");
-                assignEventListener(d);
+      <div class="card">
+        <table align="center">
+          <tr>
+            <th>Sr No.</th>
+            <th>Roll Number</th>
+            <th>Enrollment No.</th>
+            <th>Name of Student</th>
+            <th>Course</th>
+            <th>Regular/OTO</th>
+            <th>Actions</th>
+          </tr>
+          <script type="text/javascript">
+            let srno = 6;
+            let data = [
+              [
+                1,
+                243401,
+                2105710073,
+                "GHARE PRATHAM RATNADEEP",
+                "TYIF 2024-2025",
+                "REGULAR",
+              ],
+              [
+                2,
+                243402,
+                2205710007,
+                "JETHWA TANISHA ASHOK",
+                "TYIF 2024-2025",
+                "REGULAR",
+              ],
+              [
+                3,
+                243403,
+                2205710055,
+                "ANSARI NUHZEEN IMTIYAZ",
+                "TYIF 2024-2025",
+                "REGULAR",
+              ],
+              [
+                4,
+                243404,
+                2205710057,
+                "BANIK SHIVAM SITAL",
+                "TYIF 2024-2025",
+                "REGULAR",
+              ],
+              [
+                5,
+                243405,
+                2205710058,
+                "CHAUHAN RAM RAJPATI",
+                "TYIF 2024-2025",
+                "REGULAR",
+              ],
+            ];
+            for (d in data) {
+              document.write('<tr id="entry_' + d + '">');
+              for (e in data[d]) {
+                document.write(`<td>${data[d][e]}</td>`);
               }
-            </script>
-          </table>
-        </div>
+              document.write(
+                '<td><button class="actions-btn" id="btn_' +
+                  d +
+                  '"><i class="far fa-trash-alt"></i> Delete</button></td>'
+              );
+              document.write("</tr>");
+              assignEventListener(d);
+            }
+          </script>
+        </table>
       </div>
     </div>
     <footer align="center" style="position: fixed; bottom: 0; width: 100%">
