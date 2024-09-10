@@ -32,13 +32,16 @@
         padding: 1em;
         padding-top: 5px;
       }
-      nav .navbar-end {
+      .navbar-end {
         background-color: hsla(226, 64%, 47%, 1);
         margin: 20px 15px 5px 5px;
         padding: 10px 20px 10px 18px;
         border-radius: 10px;
       }
-      nav .navbar-end:hover {
+      .navbar-end2 {
+        margin: 20px 15px 5px 5px;
+      }
+      .navbar-end:hover {
         background-color: hsla(226, 64%, 42%, 1);
       }
       .navbar-end {
@@ -149,9 +152,13 @@
             </ul>
           </div>
         </div>
-        <a href="/login.html" class="navbar-end"
-          ><i class="fas fa-unlock-alt"></i>&nbsp;Login</a
-        >
+        <script type="text/javascript">
+          if (!document.cookie.includes("isLoggedIn=")) {
+            document.write("<a href=\"/login.html\" class=\"navbar-end\"> <i class=\"fas fa-unlock-alt\"></i>&nbsp;Login</a>");
+          } else {
+            document.write("<a href=\"/dashboard.html\"><img src=\"images/user.png\" width=\"30px\" height=\"30px\" class=\"navbar-end2\"></a>");
+          }
+        </script>
       </nav>
       <h2 class="login-heading">Register Yourself</h2>
       <div class="login-card">

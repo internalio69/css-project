@@ -32,13 +32,16 @@
         padding: 1em;
         padding-top: 5px;
       }
-      nav .navbar-end {
+      .navbar-end {
         background-color: hsla(226, 64%, 47%, 1);
         margin: 20px 15px 5px 5px;
         padding: 10px 20px 10px 18px;
         border-radius: 10px;
       }
-      nav .navbar-end:hover {
+      .navbar-end2 {
+        margin: 20px 15px 5px 5px;
+      }
+      .navbar-end:hover {
         background-color: hsla(226, 64%, 42%, 1);
       }
       .navbar-end {
@@ -131,6 +134,11 @@
         font-size: 0.9em;
       }
     </style>
+    <script defer type="text/javascript">
+      if (document.cookie.includes("isLoggedIn=")) {
+        document.location.href = "/dashboard.html";
+      }
+    </script>
   </head>
   <body>
     <div section="#main" class="main">
@@ -146,9 +154,17 @@
             </ul>
           </div>
         </div>
-        <a href="#" class="navbar-end"
-          ><i class="fas fa-unlock-alt"></i>&nbsp;Login</a
-        >
+        <script type="text/javascript">
+          if (!document.cookie.includes("isLoggedIn=")) {
+            document.write(
+              '<a href="/login.html" class="navbar-end"> <i class="fas fa-unlock-alt"></i>&nbsp;Login</a>'
+            );
+          } else {
+            document.write(
+              '<img src="images/user.png" width="30px" height="30px" class="navbar-end2">'
+            );
+          }
+        </script>
       </nav>
       <h2 class="login-heading">Login to Continue..</h2>
       <div class="login-card">
@@ -206,9 +222,9 @@
           for (user of users) {
             if (user.email == email) {
               if (user.password != paswd) return alert("Invalid password");
-                document.cookie = `isLoggedIn=${users.indexOf(user)};`;
+              document.cookie = `isLoggedIn=${users.indexOf(user)};`;
               alert("Logged in successfully");
-              return document.location.href = "/login.html";
+              return (document.location.href = "/dashboard.html");
             }
           }
         }
